@@ -1,15 +1,3 @@
-/**                    *
- * file                lzssk.h
- * purpose             Lempel-Ziv-Storer-Szymanski derived compression routines
- *                     The code is extremely small, decompression is blazingly fast,
- *                     and it still provides good compression. Compression is a bit
- *                     slow at ~500k/sec on a PC, as the code runs with NO memory consumption.
- *                     Faster compression is possible at the expense of memory
- *
- * author              Kasper Pedersen <kkp2008@kasperkp.dk>
- *
- *
- */
 /* Copyright (c) 2008 Kasper Kjeld Pedersen
    All rights reserved.
 
@@ -23,22 +11,6 @@
      notice, this list of conditions and the following disclaimer in
      the documentation and/or other materials provided with the
      distribution.
-
-   * Neither the name of the copyright holders nor the names of
-     contributors may be used to endorse or promote products derived
-     from this software without specific prior written permission.
-
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-  ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
-  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-  POSSIBILITY OF SUCH DAMAGE.
 */
 
 
