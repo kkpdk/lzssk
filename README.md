@@ -28,7 +28,7 @@ as the runs are typically shorter, and more is gained by referencing strings fur
 memory.
 
 
-How multithreaded compression is achieved
+###### How multithreaded compression is achieved
 
 lzssk_threadpack queries the number of threads on the processors in the system, and splits
 the compressed input into a number of chunks, one for each thread.
