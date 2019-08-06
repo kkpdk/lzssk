@@ -22,16 +22,16 @@
 //////////////////////// byte streaming decompressor ///////////////////////////
 #define LZSSK_STREAMING_WINDOW 32768
 typedef struct lzsskstruct {
-        int optr;
-        unsigned flag;
-        int srcleft;
-        uint16_t ringmask;
-        uint8_t lenbit, lenmask;
-        uint16_t ref_s, ref_len;
-        
-        const unsigned char *srcp;
-        unsigned char (*getsrc)(struct lzsskstruct *s);
-        unsigned char buf[LZSSK_STREAMING_WINDOW];
+	int optr;
+	unsigned flag;
+	int srcleft;
+	uint16_t ringmask;
+	uint8_t lenbit, lenmask;
+	uint16_t ref_s, ref_len;
+
+	const unsigned char *srcp;
+	unsigned char (*getsrc)(struct lzsskstruct *s);
+	unsigned char buf[LZSSK_STREAMING_WINDOW];
 } lzssk_t;
 
 int lzssk_init(lzssk_t *st, unsigned char *srcaddress, unsigned srclen, int winbit);
@@ -41,10 +41,10 @@ int lzssk_eof(lzssk_t *st);
 
 /////////////////////// stream combination tools ///////////////////////////////
 typedef struct {
-  //unsigned char *flags;
-  unsigned char *optr;
-  unsigned char bitcount;
-  signed char flagrel;
+	//unsigned char *flags;
+	unsigned char *optr;
+	unsigned char bitcount;
+	signed char flagrel;
 } lzsskcombine_t;
 
 void lzssk_combine_init(lzsskcombine_t *st, unsigned char *dst);
