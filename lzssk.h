@@ -63,6 +63,7 @@ typedef struct lzsskstruct {
 } lzssk_t;
 
 int lzssk_init(lzssk_t *st, unsigned char *srcaddress, unsigned srclen, int winbit);
+int lzssk_init2(lzssk_t *st, unsigned char *srcaddress, unsigned srclen, int winbit, unsigned char (*getsrcfn)(struct lzsskstruct *s));
 int lzssk_readbyte(lzssk_t *st);
 int lzssk_eof(lzssk_t *st);
 

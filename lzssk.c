@@ -521,7 +521,12 @@ static unsigned char rdbytei(struct lzsskstruct *s)
 
 int lzssk_init(lzssk_t *st, unsigned char *srcaddress, unsigned srclen, int winbit)
 {
-	st->getsrc=rdbytei;
+	return lzssk_init2(st,srcaddress,srclen,winbit,rdbytei);
+}
+
+int lzssk_init2(lzssk_t *st, unsigned char *srcaddress, unsigned srclen, int winbit, unsigned char (*getsrcfn)(struct lzsskstruct *s))
+{
+	st->getsrc=getsrcfn;
         st->optr=0;
         st->ref_len=0;
         st->srcleft=srclen;
