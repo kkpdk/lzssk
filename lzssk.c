@@ -109,7 +109,7 @@ unsigned char *lzssk_encode_wdm(unsigned char *dst, const unsigned char *src, un
 	int rel;
 
 	int lengthbits=16-winbit;
-	int copymax=(1<<lengthbits)+2; // 18 for 12 bit window, 66 for 10 bit window
+	unsigned copymax=(1<<lengthbits)+2; // 18 for 12 bit window, 66 for 10 bit window
 	int scanlength=(1<<winbit)-1;  //max backreference all-ones in length
 
 	if (!dst) {
@@ -183,7 +183,7 @@ unsigned char *lzssk_encode_w(unsigned char *dst, const unsigned char *src, unsi
 	const unsigned char *srclim=src-preview; //used for multithreaded compression. Can also be used to force an uncompressed lead-in
 
 	int lengthbits=16-winbit;
-	int copymax=(1<<lengthbits)+2; // 18 for 12 bit window, 66 for 10 bit window
+	unsigned copymax=(1<<lengthbits)+2; // 18 for 12 bit window, 66 for 10 bit window
 	int scanlength=(1<<winbit)-1;  //max backreference all-ones in length
 
 	remain=srclen;
@@ -241,9 +241,9 @@ unsigned char *lzssk_encode_w(unsigned char *dst, const unsigned char *src, unsi
 }
 
 ////////////////////// multithreaded compression ///////////////////
-#if defined(_WIN32) || defined(_WIN64) || defined(unix) || \
+#if (defined(_WIN32) || defined(_WIN64) || defined(unix) || \
     defined(__linux__) || defined(__unix__) || defined(__unix) || \
-    (defined(__APPLE__) && defined(__MACH__))
+    (defined(__APPLE__) && defined(__MACH__))) && (!defined(NOMULTITHREAD))
 
 #if (defined(_WIN32) || defined(_WIN64))
  #include <windows.h>
@@ -382,7 +382,7 @@ int lzssk_threadpack(unsigned char *dst, unsigned char *src, int srclen, int wbi
 	HANDLE  hThreadArray[LZSSK_MAX_USED_CPUS];
 	for (i=0; i<threads; ++i) {
 		hThreadArray[i] = CreateThread(
-			NULL/*SA*/, 0/*stacksize*/, ctworkerwin, ctl+i,
+			NULL/*SA*/, 0/*stacksize*/, cpworker, ctl+i,
 			0/*flags*/, &dwThreadIdArray[i]);
 	}
 	WaitForSingleObject(hThreadArray[0],INFINITE); //retire job 0
