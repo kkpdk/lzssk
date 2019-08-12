@@ -324,7 +324,7 @@ int lzssk_cpus(void)
 }
 
 
-int lzssk_threadpack(unsigned char *dst, unsigned char *src, int srclen, int wbit, int cachespacing, int deltamap)
+int lzssk_threadpack(unsigned char *dst, unsigned char *src, int srclen, int wbit, int cachespacing, int deltamap, int minblock)
 {
 	cpworker_t ctl[LZSSK_MAX_USED_CPUS]; //768 byte for control with 32 threads
 	int block;
@@ -333,6 +333,8 @@ int lzssk_threadpack(unsigned char *dst, unsigned char *src, int srclen, int wbi
 	int threads;
 	int minblk = (1<<(16-wbit))+3; //a full length copy with the used window, not really the
                                    //minimum, but the minimum where compression can be any good
+	if (minblk<minblock) minblk=minblock;
+
 	threads=lzssk_cpus();
 	if (threads>LZSSK_MAX_USED_CPUS) threads=LZSSK_MAX_USED_CPUS;
 	block=srclen/threads;
@@ -405,7 +407,7 @@ int lzssk_threadpack(unsigned char *dst, unsigned char *src, int srclen, int wbi
 
 int lzssk_threadpack_dstsize(int srclen, int wbit, int cachespacing)
 {
-	return lzssk_threadpack(0,0,srclen,wbit,cachespacing,0);
+	return lzssk_threadpack(0,0,srclen,wbit,cachespacing,0,0);
 }
 /*end of multithreaded compression*/
 #endif

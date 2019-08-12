@@ -107,14 +107,14 @@ for (k=0; k<13; ++k) {
 #endif
   
   //for (i=0; i<160; ++i) lzssk_encode_w(pko,pki, 65536, 12 , 0);
-  for (i=0; i<160; ++i) lzssk_threadpack(pko,pki, 65536, 12,1,1);
+  for (i=0; i<160; ++i) lzssk_threadpack(pko,pki, 65536, 12,1,1,0);
  
   //4.2 seconds for 4k window 10MB. 1.15s for 1k window = 8,6MB/s @4core
   
 //  return;
   strcpy(pki,"this is this simple test text that i simply put here here here is the text**********************************************************************************************************************************************************************************************************************");
 
-  printf("k=%i\n",k=lzssk_threadpack(pko,pki,4*30,12,1,1));
+  printf("k=%i\n",k=lzssk_threadpack(pko,pki,4*30,12,1,1,0));
   po=pko+k;
   goto dodecode;
 

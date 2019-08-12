@@ -76,6 +76,6 @@ int lzssk_threadpack_dstsize(int srclen, int wbit, int cachespacing);
 //if heap allocation fails, threadpack falls back to no-deltamap mode.
 //Maximum CPUS is currently set to 32 above. This means a peak allocation of 8MB for the per-thread
 //tables on a 32-thread processor (such as R9-3950X).
-int lzssk_threadpack(unsigned char *dst, unsigned char *src, int srclen, int wbit, int cachespacing, int deltamap);
+int lzssk_threadpack(unsigned char *dst, unsigned char *src, int srclen, int wbit, int cachespacing, int deltamap, int minblock);
 
 #endif /*LZSSK_H_*/
